@@ -86,15 +86,57 @@
       <h1 class="hero-title">        <span>EVENTS</span>        <span>PEOPLE</span>        <span>TRAVEL</span>      </h1>
       <p class="hero-description">        Find people going to the same events, plan your trip        and experience the event together.      </p>    </section>
     <section class="event-section container">      <div class="section-label">The event</div>
-      <article class="event-card">        <div>          <div class="event-tag">Singapore · 2026</div>
-          <h2>BTS Singapore Tour 2026</h2>
-          <p class="event-details">            17-Dec, 19-Dec, 20-Dec, 22-Dec 2026            <span> · National Stadium · Singapore</span>          </p>        </div>
+      <article class="event-card">        <div>          <div class="event-tag">Singapore · 2027</div>
+          <h2>BTS Singapore Tour 2027</h2>
+          <p class="event-details">            17-Dec, 19-Dec, 20-Dec, 22-Dec 2027            <span> · National Stadium · Singapore</span>          </p>        </div>
         <button class="cta" id="openForm">          I'm going <span class="arrow">↗</span>        </button>      </article>    </section>
-    <section class="origins-section container">      <div class="origins-heading">        <div>          <div class="section-label">The community</div>          <h2>Where are people travelling from?</h2>          <p class="origins-subtitle">            Find your people before you even get there.          </p>        </div>
-        <div class="live-label">          <span class="live-dot"></span>          <span id="dataStatus">Going</span>        </div>      </div>
-      <div class="origins-list" id="originsList">        <!-- Example values. Replace with real Tally response data. -->        <div class="origin-row">          <span class="origin-name">Delhi</span>          <span class="origin-count">            <span class="count-number">Coming</span> Soon          </span>        </div>
-        <div class="origin-row">          <span class="origin-name">Tokyo</span>          <span class="origin-count">            <span class="count-number">Coming</span> Soon          </span>        </div>      </div>    </section>  </main>
-  <footer class="footer">    <div class="container footer-inner">      <span class="logo">DAZZLE</span>      <span>Better events, better together.</span>    </div>  </footer>
+    <section class="origins-section container">      <div class="origins-heading">        <div>          <div class="section-label">The community</div>          
+	
+	<div id="links-container">Loading headers...</div>
+
+    <script>
+        // Replace these 4 filenames with your exact HTML file names
+        const pages = [
+            'The Ultimate BTS Singapore Fan Itinerary - Top Attractions & Travel Essentials.html',
+            'Where to Stay for BTS in Singapore - Best Hotels Near the National Stadium.html',
+            'How to Buy Safe Resale Tickets for BTS Singapore (Avoiding Concert Scams).html',
+            'bts-singapore-tips.html'
+        ];
+
+        async function loadHeaders() {
+            const container = document.getElementById('links-container');
+            container.innerHTML = '';
+
+            for (const file of pages) {
+                try {
+                    const response = await fetch(file);
+                    const html = await response.text();
+                    const doc = new DOMParser().parseFromString(html, 'text/html');
+                    
+                    // Grabs the first <h1> or <title> from each file
+                    const headerText = doc.querySelector('h1')?.textContent.trim() 
+                                    || doc.querySelector('title')?.textContent.trim() 
+                                    || file;
+
+                    const link = document.createElement('a');
+                    link.href = file;
+                    link.className = 'post-link';
+                    link.innerHTML = `<h2>${headerText}</h2>`;
+                    container.appendChild(link);
+                } catch (err) {
+                    console.error('Could not load:', file);
+                }
+            }
+        }
+
+        loadHeaders();
+    </script>	
+	
+	<h2>Where are people travelling from?</h2>          <p class="origins-subtitle">            Find your people before you even get there.          </p>        </div>
+        <div class="live-label">          <span class="live-dot"></span>          <span id="dataStatus">Example data</span>        </div>      </div>
+      <div class="origins-list" id="originsList">        <!-- Example values. Replace with real Tally response data. -->        <div class="origin-row">          <span class="origin-name">Delhi</span>          <span class="origin-count">            <span class="count-number">10</span> people          </span>        </div>
+        <div class="origin-row">          <span class="origin-name">Tokyo</span>          <span class="origin-count">            <span class="count-number">15</span> people          </span>        </div>      </div>    </section>  </main>
+  <footer class="footer">    <div class="container footer-inner">      <span class="logo">Triporbit</span>      <span>Better events, better together.</span>    </div>  </footer>
   <!-- Tally form popup -->  <div    class="modal"    id="formModal"    role="dialog"    aria-modal="true"    aria-label="Join the event"  >    <div class="modal-panel">      <div class="modal-header">        <strong>JOIN THE DAZZLE COMMUNITY</strong>        <button          class="close-modal"          id="closeForm"          aria-label="Close form"        >&times;</button>      </div>
       <iframe        class="tally-frame"        id="tallyFrame"        title="DAZZLE event registration form"        loading="lazy"        allow="clipboard-write"      ></iframe>
       <noscript>        <p class="modal-fallback">          Enable JavaScript to open the registration form.        </p>      </noscript>    </div>  </div>
