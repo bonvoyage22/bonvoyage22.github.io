@@ -78,7 +78,22 @@
       .modal {        padding: 0;        align-items: end;      }
       .modal-panel {        width: 100%;        height: 92dvh;        border-radius: 20px 20px 0 0;      }
       .footer-inner {        flex-direction: column;      }    }
-    @media (prefers-reduced-motion: reduce) {      *, *::before, *::after {        scroll-behavior: auto !important;        transition: none !important;      }    }  
+    @media (prefers-reduced-motion: reduce) {      *, *::before, *::after {        scroll-behavior: auto !important;        transition: none !important;      }    }
+#links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* Exact space between each of the 4 headings */
+}
+
+.post-link {
+    display: block;
+    padding: 20px;
+    margin: 0; /* Let 'gap' handle all the spacing */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #111;
+}	
 	</style>
 	</head>
 <body>  <header>    <div class="container navbar">      <a href="#" class="logo">TRIPORBIT</a>      <div class="nav-note">The Ultimate BTS Tour Travel Guide for ARMY.</div>    </div>  </header>
@@ -95,7 +110,7 @@
 	<div id="links-container">Loading headers...</div>
 
     <script>
-        // Replace these 4 filenames with your exact HTML file names
+        // 4 HTML files containing the real article
         const pages = [
             'The Ultimate BTS Singapore Fan Itinerary - Top Attractions & Travel Essentials.html',
             'Where to Stay for BTS in Singapore - Best Hotels Near the National Stadium.html',
