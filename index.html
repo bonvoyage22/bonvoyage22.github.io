@@ -465,6 +465,37 @@ header {
     transition: none !important;
   }
 }
+
+/* Keep hero description on one line */
+.hero-description {
+  max-width: none;
+  white-space: nowrap;
+}
+
+/* Match the event heading styling */
+.origins-heading h2 {
+  max-width: none;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700;
+  letter-spacing: -1.3px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Travel origins layout */
+.origins-heading {
+  display: block;
+}
+
+@media (max-width: 650px) {
+  .hero-description {
+    white-space: normal;
+  }
+
+  .origins-heading h2 {
+    white-space: normal;
+  }
+}
 </style>
 </head>
 
@@ -489,8 +520,7 @@ header {
   </h1>
 
   <p class="hero-description">
-    Find people going to the same events, plan your trip
-    and experience the event together.
+    Find people going to the same events, plan your trip, and experience the event together.
   </p>
 </section>
 
@@ -518,17 +548,13 @@ header {
 <section class="origins-section container">
 
   <div class="origins-heading">
-    <div>
-      <div class="section-label">The guides</div>
 
-      <div id="links-container">Loading headers...</div>
+    <h2>Find your people before you even get there</h2>
 
-      <h2>Find your people before you even get there</h2>
+    <p class="origins-subtitle">
+      Where are people travelling from?
+    </p>
 
-      <p class="origins-subtitle">
-        Where are people travelling from?
-      </p>
-    </div>
   </div>
 
   <div class="origins-list" id="originsList">
@@ -550,6 +576,13 @@ header {
   </div>
 
 </section>
+
+
+<section class="origins-section container">
+
+  <div class="section-label">The guides</div>
+
+  <div id="links-container">Loading headers...</div>
 
 </main>
 
